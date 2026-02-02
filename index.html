@@ -69,6 +69,7 @@ h1{
   margin:24px 0;
 }
 
+/* buttons */
 .buttons button{
   padding:12px 30px;
   margin:10px;
@@ -87,6 +88,7 @@ h1{
 #noBtn{
   background:#f1b3c4;
   color:#5a2a2a;
+  position:relative;
 }
 
 .dialogue{
@@ -116,6 +118,23 @@ h1{
 @keyframes slideLeft{to{left:0}}
 @keyframes slideRight{to{right:0}}
 
+/* minimal yes button on page 2 */
+.minimal-yes{
+  margin-top:24px;
+  background:transparent;
+  border:1px solid #c9184a;
+  color:#c9184a;
+  padding:10px 26px;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+.minimal-yes:hover{
+  background:#c9184a;
+  color:white;
+}
+
 .final-text{
   font-size:18px;
   line-height:1.8;
@@ -127,6 +146,7 @@ h1{
 <body>
 
 <script>
+/* floating hearts creation */
 for(let i=0;i<36;i++){
   const h=document.createElement("div");
   h.className="heart";
@@ -140,12 +160,12 @@ for(let i=0;i<36;i++){
 <!-- PAGE 1 -->
 <div class="section" id="page1">
   <div class="card">
-    <h1>Will you be my Valentine Aeman</h1>
+    <h1>Will you be my Valentine, Aeman?</h1>
     <div class="heart-symbol">♥</div>
 
     <div class="buttons">
       <button id="yesBtn" onclick="goHands()">Yes</button>
-      <button id="noBtn" onclick="sayNo()">No</button>
+      <button id="noBtn" onmouseover="moveNo()" onclick="sayNo()">No</button>
     </div>
 
     <div class="dialogue" id="dialogue"></div>
@@ -161,11 +181,11 @@ for(let i=0;i<36;i++){
     </div>
 
     <p style="margin-top:100px;color:#5a2a2a;font-size:18px;">
-      Permit me the honour of your hand not as a momentary gesture  
+      Permit me the honour of your hand not as a fleeting gesture  
       but as a lifelong covenant of presence constancy and devotion
     </p>
 
-    <button id="yesBtn" onclick="goFinal()">Yes</button>
+    <button class="minimal-yes" onclick="goFinal()">Yes</button>
   </div>
 </div>
 
@@ -195,6 +215,14 @@ for(let i=0;i<36;i++){
 </audio>
 
 <script>
+/* No button movement */
+function moveNo(){
+  const no=document.getElementById("noBtn");
+  no.style.left=Math.random()*120-60+"px";
+  no.style.top=Math.random()*60-30+"px";
+}
+
+/* refined no-dialogues */
 const lines=[
   "That refusal lacks conviction and betrays a hesitant heart",
   "Such denial appears ornamental rather than sincere",
